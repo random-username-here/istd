@@ -13,8 +13,8 @@ void _istd_internal_panic(const char* location, const char* fmt, ...);
   (__FILE__ ":" im_str$(__LINE__))
 
 /// Panic with given formatted string
-#define panic$(fmt, ...) \
-  _istd_internal_panic(location$(), fmt __VA_OPT__(,) __VA_ARGS__)
+#define panic$(...) \
+  _istd_internal_panic(location$(), __VA_ARGS__)
 
 #define check$(expr, ...) do {\
     if (!(expr)) panic$(__VA_ARGS__); \
