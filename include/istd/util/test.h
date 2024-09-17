@@ -242,9 +242,9 @@ bool _itest_has_something_failed(void);
 #define itest_check_hex_le$(a, b, ...) _itest_check_op$(a, b, <=, unsigned long long, "0x%llx", __VA_ARGS__)
 
 #define itest_check_char_equal$(a, b, ...) _itest_check_op$(a, b, ==, char, "%1$d (`%1$d`)", __VA_ARGS__)
-#define itest_check_ptr_equal$(a, b, ...)  _itest_check_op$(a, b, ==, void*, "%p", __VA_ARGS__)
+#define itest_check_ptr_equal$(a, b, ...)  _itest_check_op$(a, b, ==, const void*, "%p", __VA_ARGS__)
 
-#define itest_check_ptr_null$(a, ...)  _itest_check_op$(a, NULL, ==, void*, "%p", __VA_ARGS__)
-#define itest_check_ptr_notnull$(a, ...)  _itest_check_op$(a, NULL, != , void*, "%p", __VA_ARGS__)
+#define itest_check_ptr_null$(a, ...)  _itest_check_op$(a, NULL, ==, const void*, "%p", __VA_ARGS__)
+#define itest_check_ptr_notnull$(a, ...)  _itest_check_op$(a, NULL, != , const void*, "%p", __VA_ARGS__)
 
 #endif
