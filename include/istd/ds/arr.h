@@ -140,7 +140,7 @@ void _ia_generic_push(void** array, const void* item, size_t item_size);
 ///
 #define ia_push$(array, item) ({\
     typeof(**array) _ia_referencable_item = (item);\
-    _ia_generic_push((array), &_ia_referencable_item, sizeof(_ia_referencable_item));\
+    _ia_generic_push((void**) (array), &_ia_referencable_item, sizeof(_ia_referencable_item));\
   })
 
 
@@ -148,7 +148,7 @@ void _ia_generic_pop(void** array, size_t item_size);
 
 
 /// \brief Pop last item from given array.
-#define ia_pop$(array) _ia_generic_pop((void**) array, sizeof(typeof(**array)))
+#define ia_pop$(array) _ia_generic_pop((void**) (array), sizeof(typeof(**array)))
 
 
 #endif

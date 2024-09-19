@@ -88,7 +88,7 @@ static void array_must_have_space(void** array, size_t avail, size_t item_size) 
 
   while (ia_avail(arr->data) < avail) {
     size_t nw = ia_avail(arr->data) * 3 / 2 + 1;
-    arr = realloc(
+    arr = (_ia_actual_array_t*) realloc(
         arr,
         nw * item_size + 1 + sizeof(_ia_actual_array_t)
     );
@@ -109,7 +109,7 @@ void _ia_generic_push(void** array, const void* item, size_t item_size) {
   assert(array);
   assert(item);
 
-  array_must_have_space(array, ia_length(array)+1, item_size);
+  array_must_have_space(array, ia_length(*array)+1, item_size);
   _ia_actual_array_t* arr = actual_array(*array);
   memcpy(arr->data + item_size * arr->length, item, item_size);
   arr->length++;
