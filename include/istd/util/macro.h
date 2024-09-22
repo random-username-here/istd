@@ -30,4 +30,10 @@
 #define _im_with_inner$(begin, end, var_name) for(int var_name = ((begin), 0); var_name < 1; ++var_name, (end))
 #define im_with$(begin, end) _im_with_inner$(begin, end, im_concat$(_im_with_counter__, __COUNTER__))
 
+
+/// wrapper around Calloc()
+/// NOTE(i-s-d): Does this belong here?
+#define calloc$(num, type) ((type*) calloc((num), sizeof(type)))
+
+
 #endif

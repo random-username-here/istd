@@ -24,3 +24,16 @@ void _istd_internal_panic(const char* location, const char* fmt, ...) {
 }
 
 
+void* _istd_calloc_checked(size_t num, size_t item_size, const char* errmsg) {
+
+  void* mem = calloc(num, item_size);
+
+  if (mem == NULL) {
+    if (errmsg)
+      panic$("%s\n", errmsg);
+    else
+      panic$("Failed to calloc(len: %zu, item_size: %zu)\n", num, item_size);
+  }
+
+  return mem;
+}
