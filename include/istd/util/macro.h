@@ -7,6 +7,7 @@
 #ifndef ISTD_UTIL_MACRO
 #define ISTD_UTIL_MACRO
 
+#include <stdlib.h>
 
 // Concatenating ID-s
 #define _im_concat_inner$(a, b) a##b
