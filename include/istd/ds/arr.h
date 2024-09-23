@@ -138,10 +138,10 @@ void _ia_generic_push(void** array, const void* item, size_t item_size);
 /// \param array Pointer to array to push item into (`&arr`, not just `arr`).
 /// \param  item Item to push into array. 
 ///
-#define ia_push$(array, item) ({\
+#define ia_push$(array, item) do {\
     typeof(**array) _ia_referencable_item = (item);\
     _ia_generic_push((void**) (array), &_ia_referencable_item, sizeof(_ia_referencable_item));\
-  })
+  } while(0)
 
 
 void _ia_generic_pop(void** array, size_t item_size);
